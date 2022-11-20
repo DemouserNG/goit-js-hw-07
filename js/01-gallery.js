@@ -3,28 +3,29 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
+const imagesContainer = document.querySelector(".gallery");
 
-const imagesContainer = document.querySelector('.gallery')
+const list = creatGallary(galleryItems);
+imagesContainer.insertAdjacentHTML("beforeend", list);
 
-galleryItems.forEach((el) => {
-  imagesContainer.insertAdjacentHTML(
-    'afterbegin',
-    `<div class="gallery__item">
+
+function creatGallary (el) {
+  return el
+    .map(({ preview, original, description }) => {
+      return `
+       <div class="gallery__item">
       <a class="gallery__link" href="${el.original}">
     <img
       class="gallery__image"
-      src="${el.preview}"
-      data-source="${el.original}"
-      alt="${el.description}"
+      src="${preview}"
+     data-source="${original}"
+     alt="${description}"
     />
   </a>
-</div>`
-  );
-
-
-    imagesContainer.append(el);
-});
-
+ </div>`;
+    })
+    .join("");
+};
 
 imagesContainer.addEventListener('click', onClick); 
 

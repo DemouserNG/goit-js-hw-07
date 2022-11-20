@@ -3,19 +3,29 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const imagesContainer = document.querySelector('.gallery')
 
-galleryItems.forEach((el) => {
-    imagesContainer.insertAdjacentHTML(
-        'afterbegin',
-        `<a class="gallery__item" href="${el.original}">
-  <img class="gallery__image" src="${el.preview}" alt="${el.description}" />
-</a>`
-    )
-    imagesContainer.append(el);
-    
-    
-});
+const imagesContainer = document.querySelector(".gallery");
+
+const list = creatGallary(galleryItems);
+imagesContainer.insertAdjacentHTML("beforeend", list);
+
+
+
+function creatGallary (el) {
+  return el
+    .map(({ preview, original, description }) => {
+      return `
+        <a class="gallery__item"
+        href="${original}">
+        <img class="gallery__image"
+            src="${preview}" 
+            alt=${description}" />
+        </a>
+        `;
+    })
+    .join("");
+};
+
 
 new SimpleLightbox(".gallery a", {
   captionsData: "alt",
