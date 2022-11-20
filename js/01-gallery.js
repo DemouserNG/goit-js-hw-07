@@ -7,9 +7,9 @@ console.log(galleryItems);
 const imagesContainer = document.querySelector('.gallery')
 
 galleryItems.forEach((el) => {
-    imagesContainer.insertAdjacentHTML(
-        'afterbegin',
-        `<div class="gallery__item">
+  imagesContainer.insertAdjacentHTML(
+    'afterbegin',
+    `<div class="gallery__item">
       <a class="gallery__link" href="${el.original}">
     <img
       class="gallery__image"
@@ -19,7 +19,7 @@ galleryItems.forEach((el) => {
     />
   </a>
 </div>`
-    );
+  );
 
 
     imagesContainer.append(el);
