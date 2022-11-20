@@ -3,6 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
+
 const imagesContainer = document.querySelector('.gallery')
 
 galleryItems.forEach((el) => {
@@ -20,15 +21,24 @@ galleryItems.forEach((el) => {
 </div>`
     );
 
-    // const imgEl = document.createElement('img');
-    // imgEl.classList.add('gallery__image');
-    // imgEl.src = el.preview;
-    // // imgEl.dataset = el.original;
-    // imgEl.alt = el.description;
 
     imagesContainer.append(el);
 });
 
-    // imagesContainer.addEventListener('click', e => {
-    //     console.log(e.target.nodeName)
-    // })
+
+imagesContainer.addEventListener('click', onClick); 
+
+function onClick(event) {
+    event.preventDefault();
+
+    if (event.target.nodeName === 'IMG') {
+        const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}" width="800" height="600">`)
+        
+        
+        instance.show()
+    }
+    
+};
+
+
