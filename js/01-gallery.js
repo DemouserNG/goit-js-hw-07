@@ -5,6 +5,7 @@ console.log(galleryItems);
 
 const imagesContainer = document.querySelector(".gallery");
 
+
 const list = creatGallary(galleryItems);
 imagesContainer.insertAdjacentHTML("beforeend", list);
 
