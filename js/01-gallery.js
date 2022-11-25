@@ -6,6 +6,7 @@ console.log(galleryItems);
 const imagesContainer = document.querySelector(".gallery");
 
 
+
 const list = creatGallary(galleryItems);
 imagesContainer.insertAdjacentHTML("beforeend", list);
 
@@ -15,7 +16,7 @@ function creatGallary (el) {
     .map(({ preview, original, description }) => {
       return `
        <div class="gallery__item">
-      <a class="gallery__link" href="${el.original}">
+      <a class="gallery__link" href="${original}">
     <img
       class="gallery__image"
       src="${preview}"
